@@ -32,6 +32,8 @@ def pytest_runtest_logreport(self, report):
         _print_class_information(self)
     if not isinstance(word, tuple):
         test_name = _get_test_name(report.nodeid)
+        if hasattr(report, '_docstring'):
+            test_name = report._docstring
         markup, test_status = _format_results(report)
         _print_test_result(self, test_name, test_status, markup)
 
@@ -91,4 +93,4 @@ def _format_results(report):
 
 def _print_test_result(self, test_name, test_status, markup):
     self._tw.line()
-    self._tw.write("    {0}{1}".format(test_status, test_name), **markup)
+    self._tw.write(u"    {0}{1}".format(test_status, test_name), **markup)

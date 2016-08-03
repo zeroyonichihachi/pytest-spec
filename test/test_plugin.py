@@ -32,6 +32,11 @@ class TestPlugin(unittest.TestCase):
                                                               action='store_true',
                                                               dest='spec',
                                                               help='Print test result in specification format')])
+        self.mock.assert_has_calls([call.getgroup().addoption('--spec-docstr',
+                                                              action='store_true',
+                                                              dest='spec_docstr',
+                                                              default=False,
+                                                              help='Print test result in specification format with docstring (if it is available)')])
 
     @patch('imp.reload')
     def test__pytest_configure__should_not_reload_configuration(self, imp_mock):

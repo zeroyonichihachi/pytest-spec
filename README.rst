@@ -9,7 +9,7 @@ Available features
 * Group tests by classes and files
 * Failed, passed and skipped are marked and colored.
 * Remove test\_ and underscores for every test.
-
+* If the docstring is written for a test function, use it instead of converted test name (`--spec-docstr`).
 
 Output example
 ==============
@@ -28,6 +28,14 @@ Output example
         [FAIL]  Some method returns false
         [SKIP]  Some method return none
 
+::
+
+    py.test --spec-docstr
+
+    test/test_results/test_with_docstr.py
+        [PASS]  If 1 is given, fibonacci() should return 1.
+        [PASS]  If 2 is given, fibonacci() should return 1.
+        [PASS]  If 10 is given, fibonacci() should return 55.
 
 Continuous Integration
 ======================
